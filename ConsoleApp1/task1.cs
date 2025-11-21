@@ -1,8 +1,8 @@
-Console.Write("Введіть число від 1 до 100: ");
+Console.Write("Enter a number from 1 to 100: ");
 int number = int.Parse(Console.ReadLine());
 
 if (number <= 0 || number > 100)
-    Console.WriteLine("Помилка! Введіть число від 1 до 100");
+    Console.WriteLine("Error! Please enter a number from 1 to 100");
 else
 {
     if (number % 3 == 0 && number % 5 == 0)
