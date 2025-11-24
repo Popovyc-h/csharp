@@ -1,8 +1,7 @@
 Magazine magazine = new Magazine();
 
 magazine.input();
-Console.WriteLine();
-magazine.showDate();
+magazine.showData();
 
 class Magazine
 {
@@ -30,14 +29,14 @@ class Magazine
         ContactEmail = Console.ReadLine();
     }
 
-    public void showDate()
+    public void showData()
     {
-        Console.WriteLine("=== Magazine ===");
-        Console.Write($"Name: {name}");
-        Console.Write($"\nYear: {year}");
-        Console.Write($"\nDescription: {description}");
-        Console.Write($"\nPhone: {contactPhone}");
-        Console.Write($"\nEmail: {contactEmail}\n");
+        Console.WriteLine("\n=== Magazine ===");
+        Console.WriteLine($"Name: {name}");
+        Console.WriteLine($"Year: {year}");
+        Console.WriteLine($"Description: {description}");
+        Console.WriteLine($"Phone: {contactPhone}");
+        Console.WriteLine($"Email: {contactEmail}\n");
     }
 
     public string Name
