@@ -14,19 +14,80 @@ class Magazine
     public void input()
     {
         Console.Write("Enter name: ");
-        Name = Console.ReadLine();
-        
+        while (true)
+        {
+            try
+            {
+                Name = Console.ReadLine();
+                break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter name again: ");
+            }
+        }
+
+
         Console.Write("Enter year: ");
-        Year = int.Parse(Console.ReadLine());
-        
+        while(true)
+        {
+            try
+            {
+                Year = int.Parse(Console.ReadLine());
+                break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter year again: ");
+            }
+        }
+
         Console.Write("Enter description: ");
-        Description = Console.ReadLine();
-        
+        while (true)
+        {
+            try
+            {
+                Description = Console.ReadLine();
+                break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter description again: ");
+            }
+        }
+
         Console.Write("Enter phone: ");
-        ContactPhone = Console.ReadLine();
-        
+        while (true)
+        {
+            try
+            {
+                ContactPhone = Console.ReadLine();
+                break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter phone again: ");
+            }
+        }
+
         Console.Write("Enter email: ");
-        ContactEmail = Console.ReadLine();
+        while (true)
+        {
+            try
+            {
+                ContactEmail = Console.ReadLine();
+                break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter email again: ");
+            }
+        }
     }
 
     public void showData()
@@ -45,10 +106,8 @@ class Magazine
         set
         {
             if (value.Length == 0)
-            {
-                Console.WriteLine("Error: Name cannot be empty!");
-                return;
-            }
+                throw new Exception("Name cannot be empty!");
+
             name = value;
         }
     }
@@ -59,10 +118,8 @@ class Magazine
         set
         {
             if (value < 1800 || value > 2025)
-            {
-                Console.WriteLine("Error: Year must be between 1800 and 2025!");
-                return;
-            }
+                throw new Exception("Year must be between 1800 and 2025!");
+            
             year = value;
         }
     }
@@ -73,10 +130,8 @@ class Magazine
         set
         {
             if (value.Length == 0)
-            {
-                Console.WriteLine("Error: Description cannot be empty!");
-                return;
-            }
+                throw new Exception("Description cannot be empty!");
+
             description = value;
         }
     }
@@ -87,10 +142,8 @@ class Magazine
         set
         {
             if (value.Length == 0)
-            {
-                Console.WriteLine("Error: Phone cannot be empty!");
-                return;
-            }
+                throw new Exception("Phone cannot be empty!");
+            
             contactPhone = value;
         }
     }
@@ -101,10 +154,8 @@ class Magazine
         set
         {
             if (value.Length == 0)
-            {
-                Console.WriteLine("Error: Email cannot be empty!");
-                return;
-            }
+                throw new Exception("Email cannot be empty!");
+            
             contactEmail = value;
         }
     }
