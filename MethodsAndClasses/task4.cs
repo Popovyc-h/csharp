@@ -13,16 +13,64 @@ class Website
     public void input()
     {
         Console.Write("Enter name: ");
-        Name = Console.ReadLine();
+        while(true)
+        {
+            try
+            {
+                Name = Console.ReadLine();
+                break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter name again: ");
+            }
+        }
 
         Console.Write("Enter url: ");
-        Url = Console.ReadLine();
+        while (true)
+        {
+            try
+            {
+                Url = Console.ReadLine();
+                break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter url again: ");
+            }
+        }
 
         Console.Write("Enter description: ");
-        Description = Console.ReadLine();
+        while (true)
+        {
+            try
+            {
+                Description = Console.ReadLine();
+                break;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter description again: ");
+            }
+        }
 
         Console.Write("Enter ip address: ");
-        IpAddress = Console.ReadLine();
+        while (true)
+        {
+            try
+            {
+                IpAddress = Console.ReadLine();
+                break;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter ip address again: ");
+            }
+        }
     }
 
     public void showData()
@@ -39,10 +87,8 @@ class Website
         set
         {
             if (value.Length == 0)
-            {
-                Console.WriteLine("Error: Name cannot be empty!");
-                return;
-            }
+                throw new Exception("Name cannot be empty!");
+            
             name = value;
         }
     }
@@ -53,10 +99,8 @@ class Website
         set
         {
             if(value.Length == 0)
-            {
-                Console.WriteLine("Error: Url cannot be empty!");
-                return;
-            }
+                throw new Exception("Url cannot be empty!");
+            
             url = value;
         }
     }
@@ -67,10 +111,8 @@ class Website
         set
         {
             if (value.Length == 0)
-            {
-                Console.WriteLine("Error: Description cannot be empty!");
-                return;
-            }
+                throw new Exception("Description cannot be empty!");
+            
             description = value;
         }
     }
@@ -81,10 +123,8 @@ class Website
         set
         {
             if (value.Length == 0)
-            {
-                Console.WriteLine("Error: Ip address cannot be empty!");
-                return;
-            }
+                throw new Exception("Ip address cannot be empty!");
+            
             ipAddress = value;
         }
     }
