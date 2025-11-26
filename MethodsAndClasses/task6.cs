@@ -14,19 +14,79 @@ class Shop
     public void input()
     {
         Console.Write("Enter name: ");
-        Name = Console.ReadLine();
+        while (true)
+        {
+            try
+            {
+                Name = Console.ReadLine();
+                break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter name again: ");
+            }
+        }
 
         Console.Write("Enter address: ");
-        Address = Console.ReadLine();
+        while (true)
+        {
+            try
+            {
+                Address = Console.ReadLine();
+                break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter address again: ");
+            }
+        }
 
         Console.Write("Enter description: ");
-        Description = Console.ReadLine();
+        while (true)
+        {
+            try
+            {
+                Description = Console.ReadLine();
+                break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter description again: ");
+            }
+        }
 
         Console.Write("Enter phone: ");
-        ContactPhone = Console.ReadLine();
+        while (true)
+        {
+            try
+            {
+                ContactPhone = Console.ReadLine();
+                break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter phone again: ");
+            }
+        }
 
         Console.Write("Enter email: ");
-        ContactEmail = Console.ReadLine();
+        while (true)
+        {
+            try
+            {
+                ContactEmail = Console.ReadLine();
+                break;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write("Enter email again: ");
+            }
+        }
     }
 
     public void showData()
@@ -45,10 +105,8 @@ class Shop
         set
         {
             if (value.Length == 0)
-            {
-                Console.WriteLine("Error: Name cannot be empty!");
-                return;
-            }
+                throw new Exception("Name cannot be empty!");
+
             name = value;
         }
     }
@@ -59,10 +117,8 @@ class Shop
         set
         {
             if (value.Length == 0)
-            {
-                Console.WriteLine("Error: Addres cannot be empty!");
-                return;
-            }
+                throw new Exception("Addres cannot be empty!");
+            
             address = value;
         }
     }
@@ -73,10 +129,8 @@ class Shop
         set
         {
             if (value.Length == 0)
-            {
-                Console.WriteLine("Error: Description cannot be empty!");
-                return;
-            }
+                throw new Exception("Description cannot be empty!");
+
             description = value;
         }
     }
@@ -87,10 +141,8 @@ class Shop
         set
         {
             if (value.Length == 0)
-            {
-                Console.WriteLine("Error: Phone cannot be empty!");
-                return;
-            }
+                throw new Exception("Phone cannot be empty!");
+
             contactPhone = value;
         }
     }
@@ -101,10 +153,8 @@ class Shop
         set
         {
             if (value.Length == 0)
-            {
-                Console.WriteLine("Error: Email cannot be empty!");
-                return;
-            }
+                throw new Exception("Email cannot be empty!");
+
             contactEmail = value;
         }
     }
