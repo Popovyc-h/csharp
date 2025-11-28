@@ -3,14 +3,15 @@ int columns;
 int multiplier;
 Random rand = new Random();
 
-Console.Write("Enter size rows: ");
-rows = int.Parse(Console.ReadLine());
+if (args.Length < 3)
+{
+    Console.WriteLine("Not enough arguments");
+    return;
+}
 
-Console.Write("Enter size columns: ");
-columns = int.Parse(Console.ReadLine());
-
-Console.Write("Enter multiplier: ");
-multiplier = int.Parse(Console.ReadLine());
+rows = int.Parse(args[0]);
+columns = int.Parse(args[1]);
+multiplier = int.Parse(args[2]);
 
 int[,] result = createRandomMatrix(rows, columns, multiplier);
 
