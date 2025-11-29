@@ -1,11 +1,11 @@
-int[,] matrix =
+int[,] matrix1 =
 {
             { 1, 2, 3 },
             { 4, 5, 6 },
             { 7, 8, 9 }
 };
 
-int[,] B = 
+int[,] matrix2 =
 {
             {99, 82, 73},
             {64, 55, 46},
@@ -13,10 +13,10 @@ int[,] B =
 };
 
 Console.WriteLine("Default matrix");
-for (int i = 0; i < matrix.GetLength(0); i++)
+for (int i = 0; i < matrix1.GetLength(0); i++)
 {
-    for (int j = 0; j < matrix.GetLength(1); j++)
-        Console.Write(matrix[i, j] + " ");
+    for (int j = 0; j < matrix1.GetLength(1); j++)
+        Console.Write(matrix1[i, j] + " ");
     Console.WriteLine();
 }
 
@@ -24,21 +24,21 @@ Console.Write("\nEnter number: ");
 int number = int.Parse(Console.ReadLine());
 Console.WriteLine($"\nMatrix multiplied by a number {number}");
 
-for (int i = 0; i < matrix.GetLength(0); i++)
+for (int i = 0; i < matrix1.GetLength(0); i++)
 {
-    for (int j = 0; j < matrix.GetLength(1); j++)
-        Console.Write(matrix[i, j] * number + " ");
+    for (int j = 0; j < matrix1.GetLength(1); j++)
+        Console.Write(matrix1[i, j] * number + " ");
     Console.WriteLine();
 }
 
-int rows = matrix.GetLength(0);
-int columns = matrix.GetLength(1);
+int rows = matrix1.GetLength(0);
+int columns = matrix1.GetLength(1);
 
 int[,] C = new int[rows, columns];
 
 for (int i = 0; i < rows; i++)
     for (int j = 0; j < columns; j++)
-        C[i, j] = matrix[i, j] + B[i, j];
+        C[i, j] = matrix1[i, j] + matrix2[i, j];
 
 Console.WriteLine("\nSum of matrices");
 for (int i = 0; i < rows; i++)
@@ -48,12 +48,12 @@ for (int i = 0; i < rows; i++)
     Console.WriteLine();
 }
 
-int[,] D = new int[matrix.GetLength(0), B.GetLength(1)];
+int[,] D = new int[matrix1.GetLength(0), matrix2.GetLength(1)];
 
 for (int i = 0; i < D.GetLength(0); i++)
     for (int j = 0; j < D.GetLength(1); j++)
-        for (int k = 0; k < matrix.GetLength(1); k++)
-            D[i, j] += matrix[i, k] * B[k, j];
+        for (int k = 0; k < matrix1.GetLength(1); k++)
+            D[i, j] += matrix1[i, k] * matrix2[k, j];
 
 Console.WriteLine("\nProduct of matrices");
 for (int i = 0; i < D.GetLength(0); i++)
