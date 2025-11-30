@@ -10,7 +10,7 @@ int mode = int.Parse(Console.ReadLine());
 
 showField();
 
-bool isXTurn = true;
+bool isXTurn = new Random().Next(2) == 0;
 int n;
 
 while (true) 
@@ -23,7 +23,7 @@ while (true)
             humanMove();
         else
         {
-            Console.WriteLine("Хід компʼютера:");
+            Console.WriteLine("Computer's turn:");
             computerMove();
         }
     }
@@ -36,13 +36,13 @@ while (true)
 }
 
 if (checkDraw())
-    Console.WriteLine("Нічия!");
+    Console.WriteLine("It's a draw!");
 else
 {
     if (isXTurn) 
-        Console.WriteLine("Виграв O!");
+        Console.WriteLine("\nO wins!");
     if (!isXTurn) 
-        Console.WriteLine("Виграв X!");
+        Console.WriteLine("\nX wins!");
 }
 
 void computerMove()
@@ -72,9 +72,9 @@ void computerMove()
 void humanMove()
 {
     if (isXTurn)
-        Console.Write("\nХід гравця Х: ");
+        Console.Write("\nPlayer X's move: ");
     else
-        Console.Write("\nХід гравця O: ");
+        Console.Write("\nPlayer O's move: ");
 
     n = int.Parse(Console.ReadLine());
 
@@ -82,8 +82,8 @@ void humanMove()
     {
         if (n <= 0 || n > 9)
         {
-            Console.WriteLine("Ви вийшли за межі діапазано");
-            Console.Write("Введіть число від 1 до 9: ");
+            Console.WriteLine("You went out of bounds");
+            Console.Write("Enter a number from 1 to 9: ");
             n = int.Parse(Console.ReadLine());
             Console.WriteLine();
         }
@@ -110,15 +110,15 @@ void humanMove()
         showField();
     }
     else
-        Console.WriteLine("\nКлітинка зайнята виберіть іншу");
+        Console.WriteLine("\nCell is already taken, choose another");
 }
 
 void showMenu()
 {
-    Console.WriteLine("Оберіть режим гри:");
-    Console.WriteLine("1 — Людина проти людини");
-    Console.WriteLine("2 — Людина проти комп'ютера");
-    Console.Write("Ваш вибір: ");
+    Console.WriteLine("Choose game mode:");
+    Console.WriteLine("1 — Human vs Human");
+    Console.WriteLine("2 — Human vs Computer");
+    Console.Write("Your choice: ");
 }
 
 void showField()
