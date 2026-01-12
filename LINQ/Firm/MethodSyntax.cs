@@ -18,6 +18,7 @@ internal class Program
 
         var foodFirms = firms.Where(f => f.companyName.Contains("Food")).ToList();
         var itFirms = firms.Where(f => f.Profile == BusinessProfile.IT).ToList();
+        var marketingOrItFirms = firms.Where(f => f.Profile == BusinessProfile.IT || f.Profile == BusinessProfile.Marketing).ToList();
         var firmsWithMoreThan100Employees = firms.Where(f => f.employeeCount > 100).ToList();
         var firmsWithEmployees100to300 = firms.Where(f => f.employeeCount >= 100 && f.employeeCount <= 300).ToList();
         var londonFirms = firms.Where(f => f.adress.Contains("London")).ToList();
@@ -31,6 +32,9 @@ internal class Program
 
         Console.WriteLine("\nOnly IT");
         itFirms.ForEach(f => Console.WriteLine($"{f.companyName}, {f.foundingDate:dd.MM.yyyy}, {f.Profile}, {f.fullName}, {f.employeeCount}, {f.adress}"));
+
+        Console.WriteLine("\nMarketing or IT firms:");
+        marketingOrItFirms.ForEach(f => Console.WriteLine($"{f.companyName}, {f.foundingDate:dd.MM.yyyy}, {f.Profile}, {f.fullName}, {f.employeeCount}, {f.adress}"));
 
         Console.WriteLine("\nNumber of employees more than 100:");
         firmsWithMoreThan100Employees.ForEach(f => Console.WriteLine($"{f.companyName}, {f.foundingDate:dd.MM.yyyy}, {f.Profile}, {f.fullName}, {f.employeeCount}, {f.adress}"));
