@@ -8,6 +8,7 @@ public enum BusinessProfile
 
 internal class Firm
 {
+    public List<Employee> Employees = new List<Employee>();
     public string companyName;
     public DateTime foundingDate;
     public BusinessProfile Profile;
