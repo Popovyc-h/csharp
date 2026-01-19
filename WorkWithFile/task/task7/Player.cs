@@ -18,8 +18,8 @@ internal class Player
         get => name;
         set
         {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Name cannot be empty", nameof(name));
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException("Name cannot be empty", nameof(Name));
 
             name = value;
         }
@@ -31,7 +31,7 @@ internal class Player
         set
         {
             if (level < 0)
-                throw new ArgumentOutOfRangeException("level cannot be negative", nameof(level));
+                throw new ArgumentOutOfRangeException("level cannot be negative", nameof(Level));
 
             level = value;
         }
@@ -42,10 +42,15 @@ internal class Player
         get => health;
         set
         {
-            if (health <= 0 && health > 100)
-                throw new ArgumentException("health must be between 1 and 100", nameof(health));
+            if (value <= 0 || value > 100)
+                throw new ArgumentException("health must be between 1 and 100", nameof(Health));
 
             health = value;
         }
+    }
+
+    public void Print()
+    {
+        Console.WriteLine($"Name: {Name}, Level: {Level}, Health: {Health}");
     }
 }
