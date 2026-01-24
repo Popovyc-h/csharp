@@ -28,6 +28,38 @@ internal class Program
         var serializer = JsonSerializer.Serialize(contacts, options);
 
         File.WriteAllText(path, serializer);
+        Console.WriteLine("Contact added");
+    }
+
+    public static void UpdatePhone(string name, string newPhone)
+    {
+        var path = "contacts.json";
+        List<Contact> contacts = new List<Contact>();
+
+        if (File.Exists(path))
+        {
+            var read = File.ReadAllText(path);
+            var deserialize = JsonSerializer.Deserialize<List<Contact>>(read);
+
+            if (deserialize != null)
+                contacts = deserialize;
+
+            var findName = contacts.FirstOrDefault(c => c.name == name);
+
+            if (findName != null)
+                findName.number = newPhone;
+            else
+                Console.WriteLine("Contact not found");
+        }
+
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
+
+        var serializer = JsonSerializer.Serialize(contacts, options);
+        File.WriteAllText(path, serializer);
+        Console.WriteLine("The number change was successful");
     }
 
     static void Main(string[] args)
@@ -35,5 +67,7 @@ internal class Program
         var firstContact = new Contact("Bobic", "2091");
 
         AddContact(firstContact);
+
+        UpdatePhone("Bublic", "0909221");
     }
 }
