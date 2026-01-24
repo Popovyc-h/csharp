@@ -36,6 +36,11 @@ internal class Program
         var path = "contacts.json";
         List<Contact> contacts = new List<Contact>();
 
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
+
         if (File.Exists(path))
         {
             var read = File.ReadAllText(path);
@@ -47,27 +52,60 @@ internal class Program
             var findName = contacts.FirstOrDefault(c => c.name == name);
 
             if (findName != null)
+            {
                 findName.number = newPhone;
+                
+                var serializer = JsonSerializer.Serialize(contacts, options);
+                File.WriteAllText(path, serializer);
+                Console.WriteLine("The number change was successful");
+            }
             else
                 Console.WriteLine("Contact not found");
         }
+    }
+
+    public static void RemoveContact(string name)
+    {
+        var path = "contacts.json";
+        List<Contact> contacts = new List<Contact>();
 
         var options = new JsonSerializerOptions
         {
             WriteIndented = true
         };
 
-        var serializer = JsonSerializer.Serialize(contacts, options);
-        File.WriteAllText(path, serializer);
-        Console.WriteLine("The number change was successful");
+        if (File.Exists(path))
+        {
+            var read = File.ReadAllText(path);
+
+            var deserialize = JsonSerializer.Deserialize<List<Contact>>(read);
+
+            if (deserialize != null)
+                contacts = deserialize;
+
+            var findName = contacts.FirstOrDefault(c => c.name == name);
+
+            if (findName != null)
+            {
+                contacts.Remove(findName);
+                
+                var serializer = JsonSerializer.Serialize(contacts, options);
+                File.WriteAllText(path, serializer);
+                Console.WriteLine("Contact deleted");
+            }
+            else
+                Console.WriteLine("Contact not found");
+        }
     }
 
     static void Main(string[] args)
     {
-        var firstContact = new Contact("Bobic", "2091");
+        var firstContact = new Contact("Bobic", "010122");
 
-        AddContact(firstContact);
+        //AddContact(firstContact);
 
-        UpdatePhone("Bublic", "0909221");
+        UpdatePhone("Bublic", "0283");
+
+        RemoveContact("Bobic");
     }
 }
